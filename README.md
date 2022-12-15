@@ -6,7 +6,7 @@ Nama   : Ikram Ramadhan
 Nim    : 312110478
 Matkul : Pemrograman Orientasi Objek
 ````
-* *Hasil output program:*
+* *Diagram class program:*
   ![img 2](ss/diagramss.png)
 
 ### 1. File Mahasiswa.java
