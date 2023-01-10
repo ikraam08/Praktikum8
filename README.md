@@ -284,4 +284,4 @@ public class Credit extends Payment{
 ````
 
 * *Hasil output program:*
-  ![img 1](ss/programss.png)
+  ![img 1](ss/ss1png.png)
