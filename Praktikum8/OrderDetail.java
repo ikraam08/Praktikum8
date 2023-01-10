@@ -2,7 +2,7 @@ package Praktikum8;
 
 public class OrderDetail {
     private Item quantity;
-    private String taxStatus;
+    private final String taxStatus;
 
     // operator calcSubTotal asosiasi dari class Item
     public void calcSubTotal (){
@@ -15,7 +15,7 @@ public class OrderDetail {
 
     //operator class ini sendiri
     public void calcTax (){
-        System.out.println("pajak                  : "+taxStatus);
+        System.out.println("pajak                  : " + taxStatus);
     }
 
     // setter
