@@ -102,64 +102,186 @@ public class Order {
 ### 3. file Orderdetail.java
 * *CODINGAN FILE 3
 ```java
-package Praktikum7;
+package Praktikum8;
 
-public class Gender {
-    // Atribute
-    private String jenisKelamin;
+public class OrderDetail {
+  private Item quantity;
+  private final String taxStatus;
 
-    //method SETTER GETTER
-    public String getJenisKelamin() {
-        return jenisKelamin;
-    }
-    // Constructor class Gender
-    public Gender(String jenisKelamin){
-        this.jenisKelamin = jenisKelamin;
-    }
+  // operator calcSubTotal asosiasi dari class Item
+  public void calcSubTotal (){
+    quantity.inStock();
+  }
+  // operator asosiasi dari class Item juga
+  public void calcWeight (){
+    System.out.println("Berat                  : " + quantity.getShipingWeight() +" kg");
+  }
+
+  //operator class ini sendiri
+  public void calcTax (){
+    System.out.println("pajak                  : " + taxStatus);
+  }
+
+  // setter
+  public void setQuantity(Item quantity) {
+    this.quantity = quantity;
+  }
+
+  public OrderDetail(String taxStatus) {
+    this.taxStatus = taxStatus;
+  }
+
 }
 
 ```
-### 4.Jurusan.java
+### 4.Item.java
 * *CODINGAN FILE 4
 ```java
-package Praktikum7;
+package Praktikum8;
 
-public class Jurusan {
-    // Atribute
-    private String jurusan;
+public class Item {
 
-    // Method SETTER GETTER
-    public String getJurusan() {
-        return jurusan;
-    }
+  private final float shipingWeight;
+  private final String deskripsi;
 
-    public Jurusan(String jurusan){
-        this.jurusan = jurusan;
-    }
+
+
+  //method
+  public void inStock(){
+
+    System.out.println("\nDeskripsi              : Sepatu Boots");
+    System.out.println("Jumlah barang tersedia : 11");
+    System.out.println(getDeskripsi());
+
+  }
+  // getter
+  public String getDeskripsi() {
+    return deskripsi;
+  }
+
+  public double getShipingWeight() {
+    return shipingWeight;
+  }
+
+  public Item(String deskripsi,Float shipingWeight) {
+    this.deskripsi = deskripsi;
+    this.shipingWeight = shipingWeight;
+  }
+
 
 }
 
+
+
 ```
-### 5.Akademik.java
+### 5.Payment.java
 * *CODINGAN FILE 4
 ```java
-package Praktikum7;
+package Praktikum8;
 
+public abstract class Payment{
+    private float amount;
 
-public class Akademik {
-    // Call Methode
-    public static void main(String[] args) {
-        //Menampilkan hasil Agregasi class Mahasiswa pada class Gender
-        Mahasiswa mhs =new Mahasiswa("Putry","TI.22.12",121212,new Gender("Perempuan"));
-        //Menampilkan hasil Agregasi class Dosen pada class Gender
-        Dosen dos = new Dosen("amat","Bahasa Pemogramman",new Gender("laki-laki"));
-        // menampilkan Mata Kuliah dengan setter hasil Asosiasi Mahasiswa use a Dosen
-        mhs.setDosen(dos);
-        //Menampilkan Method
-        mhs.infoMahasiswa();
-        dos.infoDosen();
+    public void Pembayaran(){
+
+        System.out.println("Jumlah pembayaran  = " + amount);
+
+    }
+
+    public Payment(float amount) {
+        this.amount = amount;
     }
 }
+
 ```
+### 6.Cash.java
+* *CODINGAN FILE 4
+```java
+package Praktikum8;
+
+public class Cash extends Payment{
+
+  private float cash;
+
+  @Override
+  public void Pembayaran(){
+    super.Pembayaran();
+    System.out.println(cash);
+  }
+
+  public Cash(float amount, float cash) {
+    super(amount);
+
+  }
+}
+
+```
+### 7.Check.java
+* *CODINGAN FILE 4
+```java
+package Praktikum8;
+
+public class Check extends Payment{
+
+  private String name;
+  private String bangID;
+
+
+  @Override
+  public void Pembayaran(){
+    super.Pembayaran();
+    System.out.println("Nama Bank  = " + name);
+    System.out.println("ID Bank    = " +bangID );
+  }
+
+  public Check(float amount, String name, String bangID) {
+    super(amount);
+    this.name = name;
+    this.bangID = bangID;
+
+  }
+}
+
+````
+### 8.Credit.java
+* *CODINGAN FILE 4
+```java
+package Praktikum8;
+
+import java.util.Date;
+
+public class Credit extends Payment{
+
+    private String number;
+    private String tipe;
+    private Order Expdate;
+
+
+    public void Pembayaran(){
+
+        super.Pembayaran();
+        System.out.println("Nomer Pembayaran" + number);
+        System.out.println("Tipe pembayran" + tipe);
+        System.out.println(getExpdate());
+
+    }
+
+    public Credit(Float amount, String number, String tipe) {
+        super(amount);
+        this.number = number;
+        this.tipe = tipe;
+    }
+
+    public Order getExpdate() {
+        return Expdate;
+    }
+
+    public void setExpdate(Order expdate) {
+        Expdate = expdate;
+    }
+}
+
+````
+
 * *Hasil output program:*
   ![img 1](ss/programss.png)
