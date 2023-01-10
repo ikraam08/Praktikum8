@@ -1,4 +1,4 @@
-# PRAKTIKUM7
+# PRAKTIKUM8
 ## Pemrograman Orientasi Objek
 
 ````shell
