@@ -353,5 +353,3 @@ public class Main {
 ````
 * *Hasil output program:*
   ![img 1](ss/ss1png.png)
-* ![img 1](ss/ii.png)
-* ![img 1](ss/iii.png)
