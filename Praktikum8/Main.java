@@ -35,6 +35,7 @@ public class Main {
         System.out.println("Cash");
         System.out.println("Check");
         System.out.println("Credit");
+        System.out.println("===KETIK METODE PEMBAYARAN 2 KALI===");
         masukan.next();
         pilih = masukan.next();
 
